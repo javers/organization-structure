@@ -1,0 +1,7 @@
+vaadin:
+  servlet:
+    urlMapping" /web/*
+datainitializer:
+  populate: true
+javers:
+  databaseName: test
