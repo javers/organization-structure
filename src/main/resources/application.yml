@@ -1,6 +1,6 @@
 vaadin:
   servlet:
-    urlMapping" /web/*
+    urlMapping: /web/*
 datainitializer:
   populate: true
 javers:
