@@ -1,27 +1,16 @@
 package org.javers.organization.structure.infrastructure;
 
 import com.google.gwt.thirdparty.guava.common.collect.Lists;
-import com.mongodb.DB;
-import com.mongodb.MongoClient;
-import com.mongodb.client.MongoDatabase;
 import org.javers.core.Javers;
-import org.javers.organization.structure.domain.Employee;
-import org.javers.organization.structure.domain.Hierarchy;
-import org.javers.organization.structure.domain.HierarchyRepository;
-import org.javers.organization.structure.domain.Person;
-import org.javers.organization.structure.domain.PersonRepository;
-import org.javers.organization.structure.domain.Sex;
+import org.javers.organization.structure.domain.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-import static org.javers.organization.structure.domain.Position.CTO;
-import static org.javers.organization.structure.domain.Position.DEVELOPER;
-import static org.javers.organization.structure.domain.Position.IT_MANAGER;
-import static org.javers.organization.structure.domain.Position.SCRUM_MASTER;
-import static org.javers.organization.structure.domain.Position.TEAM_LEAD;
+import static org.javers.organization.structure.domain.Position.*;
 
 /**
  * @author bartosz walacik
@@ -107,7 +96,7 @@ public class DataInitializer {
     private PersonRepository mongoPersonRepository;
 
     @Autowired
-    private MongoClient mongoClient;
+    private MongoTemplate mongoTemplate;
 
     @Autowired
     private Javers javers;
@@ -115,18 +104,13 @@ public class DataInitializer {
     @Value("${datainitializer.populate}")
     private boolean populate;
 
-    @Value("${javers.databaseName}")
-    private String databaseName;
-
     public void populate() {
         if (populate) {
 
-            MongoDatabase db = mongoClient.getDatabase(databaseName);
-
-            db.getCollection(Person.class.getSimpleName()).drop();
-            db.getCollection(Hierarchy.class.getSimpleName()).drop();
-            db.getCollection("jv_head_id").drop();
-            db.getCollection("jv_snapshots").drop();
+            mongoTemplate.getCollection(Person.class.getSimpleName()).drop();
+            mongoTemplate.getCollection(Hierarchy.class.getSimpleName()).drop();
+            mongoTemplate.getCollection("jv_head_id").drop();
+            mongoTemplate.getCollection("jv_snapshots").drop();
 
             persons.forEach(p -> {
                 mongoPersonRepository.save(p);

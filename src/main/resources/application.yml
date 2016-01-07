@@ -3,5 +3,3 @@ vaadin:
     urlMapping: /web/*
 datainitializer:
   populate: true
-javers:
-  databaseName: test
