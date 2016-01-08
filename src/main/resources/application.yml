@@ -1,5 +1,5 @@
 vaadin:
   servlet:
-    urlMapping: /web/*
+    urlMapping: /*
 datainitializer:
   populate: true
