@@ -34,7 +34,7 @@ dependencies {
     compile ('org.springframework.boot:spring-boot-starter-data-mongodb:1.3.0.RELEASE') {
         exclude module: 'mongo-java-driver'
     }
-    compile 'org.javers:javers-spring-boot-starter-mongo:1.4.1-SNAPSHOT'
+    compile 'org.javers:javers-spring-boot-starter-mongo:1.4.1'
     compile 'com.google.guava:guava:18.0'
     compile 'org.mongodb:mongo-java-driver:3.0.4'
 
