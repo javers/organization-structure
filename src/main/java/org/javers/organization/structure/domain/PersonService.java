@@ -15,7 +15,6 @@ public class PersonService {
         this.personRepository = personRepository;
     }
 
-    @JaversAuditable
     public void update(Person person) {
         //TODO check
 
