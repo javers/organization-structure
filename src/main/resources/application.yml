@@ -1,5 +1,0 @@
-vaadin:
-  servlet:
-    urlMapping: /*
-datainitializer:
-  populate: true

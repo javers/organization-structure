@@ -1,0 +1,12 @@
+plugins {
+    id 'java'
+}
+
+dependencies {
+    compile 'org.javers:javers-core:1.4.2'
+    compile 'org.javers:javers-spring:1.4.2'
+    compile 'com.vaadin:vaadin-spring-boot-starter:1.0.0'
+    compile 'com.google.guava:guava:18.0'
+    compile 'org.springframework.data:spring-data-commons:1.11.1.RELEASE'
+
+}
