@@ -15,17 +15,15 @@ buildscript {
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
         classpath("io.spring.gradle:dependency-management-plugin:0.5.4.RELEASE")
-        classpath "fi.jasoft.plugin:gradle-vaadin-plugin:0.10.4"
     }
 }
 
 allprojects {
     apply plugin: 'java'
     apply plugin: 'spring-boot'
-    apply plugin: 'fi.jasoft.plugin.vaadin'
-
 
     repositories {
+        mavenLocal()
         mavenCentral()
         maven {
             url "https://oss.sonatype.org/content/repositories/snapshots"
@@ -33,9 +31,10 @@ allprojects {
     }
 }
 
-dependencyManagement {
-    imports {
-        mavenBom "com.vaadin:vaadin-bom:7.4.2"
+subprojects {
+    dependencies {
+        compile 'com.google.guava:guava:18.0'
+        compile 'org.springframework.data:spring-data-commons:1.11.1.RELEASE'
     }
 }
 

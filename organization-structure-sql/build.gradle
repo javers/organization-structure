@@ -1,0 +1,10 @@
+dependencies {
+    compile project(':organization-structure-ui')
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa'
+    compile 'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final'
+    compile 'org.javers:javers-spring-boot-starter-sql:1.4.1-SNAPSHOT'
+
+    compile 'com.h2database:h2'
+//    compile 'postgresql:postgresql:9.1-901-1.jdbc4'
+
+}
