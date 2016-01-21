@@ -1,4 +1,4 @@
-package org.javers.organization.structure.domain;
+package org.javers.organization.structure.application;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

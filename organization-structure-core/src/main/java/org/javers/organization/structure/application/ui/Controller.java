@@ -1,4 +1,4 @@
-package org.javers.organization.structure.ui;
+package org.javers.organization.structure.application.ui;
 
 import org.javers.organization.structure.domain.Employee;
 import org.javers.organization.structure.domain.Hierarchy;

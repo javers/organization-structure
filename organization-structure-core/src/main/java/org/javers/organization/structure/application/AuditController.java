@@ -1,4 +1,4 @@
-package org.javers.organization.structure.domain;
+package org.javers.organization.structure.application;
 
 
 import org.javers.core.Javers;
@@ -6,6 +6,9 @@ import org.javers.core.diff.Change;
 import org.javers.core.diff.Diff;
 import org.javers.core.json.JsonConverter;
 import org.javers.core.metamodel.object.CdoSnapshot;
+import org.javers.organization.structure.domain.Hierarchy;
+import org.javers.organization.structure.domain.HierarchyService;
+import org.javers.organization.structure.domain.Person;
 import org.javers.repository.jql.QueryBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;

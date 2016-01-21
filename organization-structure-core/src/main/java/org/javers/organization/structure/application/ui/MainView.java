@@ -1,4 +1,4 @@
-package org.javers.organization.structure.ui;
+package org.javers.organization.structure.application.ui;
 
 import com.vaadin.annotations.Theme;
 import com.vaadin.server.VaadinRequest;
@@ -8,6 +8,7 @@ import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.UI;
+import org.javers.organization.structure.application.DataInitializer;
 import org.javers.organization.structure.domain.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 

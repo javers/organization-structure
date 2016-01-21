@@ -42,3 +42,5 @@ dependencyManagement {
 task wrapper(type: Wrapper) {
     gradleVersion = '2.9'
 }
+
+defaultTasks ':organization-structure-mongo:bootRun'

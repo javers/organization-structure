@@ -1,4 +1,4 @@
-package org.javers.organization.structure.domain;
+package org.javers.organization.structure.application;
 
 import org.javers.spring.auditable.AuthorProvider;
 import org.springframework.beans.factory.annotation.Autowired;

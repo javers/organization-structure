@@ -1,4 +1,4 @@
-package org.javers.organization.structure.ui;
+package org.javers.organization.structure.application.ui;
 
 import com.vaadin.data.fieldgroup.BeanFieldGroup;
 import com.vaadin.ui.Button;

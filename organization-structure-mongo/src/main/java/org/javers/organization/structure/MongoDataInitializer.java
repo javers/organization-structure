@@ -9,7 +9,7 @@ import org.javers.organization.structure.domain.Person;
 import org.javers.organization.structure.domain.PersonRepository;
 import org.javers.organization.structure.domain.Position;
 import org.javers.organization.structure.domain.Sex;
-import org.javers.organization.structure.ui.DataInitializer;
+import org.javers.organization.structure.application.DataInitializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.mongodb.core.MongoTemplate;
