@@ -13,8 +13,8 @@ public class PersonService {
         this.personRepository = personRepository;
     }
 
-    public void update(Person person) {
-        personRepository.save(person);
+    public Person update(Person person) {
+        return personRepository.save(person);
     }
 
     public Person findPerson(String login) {

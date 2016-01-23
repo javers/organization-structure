@@ -20,8 +20,8 @@ public class HierarchyService {
         return Lists.newArrayList(hierarchyRepository.findAll());
     }
 
-    public void update(Hierarchy selected) {
-        hierarchyRepository.save(selected);
+    public Hierarchy update(Hierarchy selected) {
+        return hierarchyRepository.save(selected);
     }
 
     public Hierarchy find(String left) {
