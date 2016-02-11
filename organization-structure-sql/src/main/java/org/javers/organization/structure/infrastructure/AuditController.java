@@ -47,9 +47,9 @@ public class AuditController {
         return jsonConverter.toJson(changes);
     }
 
-    @RequestMapping("/person/{login}")
-    public String getPersonChanges(@PathVariable String login, @RequestParam Optional<String> param) {
-        QueryBuilder jqlQuery = QueryBuilder.byInstanceId(login, Person.class);
+    @RequestMapping("/person/{id}")
+    public String getPersonChanges(@PathVariable Integer id, @RequestParam Optional<String> param) {
+        QueryBuilder jqlQuery = QueryBuilder.byInstanceId(id, Person.class);
 
         jqlQuery = param.isPresent() ? jqlQuery.andProperty(param.get()) : jqlQuery;
 

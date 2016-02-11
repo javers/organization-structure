@@ -1,5 +1,8 @@
 package org.javers.organization.structure.ui;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class PersonDto {
     private int id;
     private String firstName;
@@ -8,7 +11,13 @@ public class PersonDto {
     private Integer salary;
     private String position;
 
-    public PersonDto(int id, String firstName, String lastName, String sex, Integer salary, String position) {
+    @JsonCreator
+    public PersonDto(@JsonProperty("id") Integer id,
+                     @JsonProperty("firstName") String firstName,
+                     @JsonProperty("lastName") String lastName,
+                     @JsonProperty("sex") String sex,
+                     @JsonProperty("salary") Integer salary,
+                     @JsonProperty("position") String position) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;

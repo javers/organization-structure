@@ -47,4 +47,9 @@ public class PersonService {
                 .map(e -> e.getDomainName())
                 .collect(Collectors.toList());
     }
+
+    @JaversAuditable
+    public void save(Person person) {
+        personRepository.save(person);
+    }
 }

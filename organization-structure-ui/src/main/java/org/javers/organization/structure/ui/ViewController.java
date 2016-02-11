@@ -25,6 +25,9 @@ public abstract class ViewController {
     @RequestMapping(value = "person", method = RequestMethod.PUT)
     public abstract void updatePerson(@RequestBody PersonDto person);
 
+    @RequestMapping(value = "person", method = RequestMethod.POST)
+    public abstract void savePerson(@RequestBody PersonDto person);
+
     @RequestMapping("person/{id}")
     public abstract PersonDto personDetails(@PathVariable int id);
 
