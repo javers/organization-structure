@@ -1,3 +1,5 @@
-include 'organization-structure-core',
-        'organization-structure-mongo'
+include 'organization-structure-ui',
+        'organization-structure-mongo',
+        'organization-structure-sql'
+
 
