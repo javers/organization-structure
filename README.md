@@ -1,4 +1,14 @@
 # organization-structure
-Sample application demonstrating use of Javers-spring-boot-starter-mongo.
+Sample application demonstrating use of JaVers Spring Boot starters.
 
-To start app execute `./gradlew bootRun` in root directory, application requires MongoDB (3.0.0+) running on port 27017.
+## spring-boot-starter-data-mongodb
+
+./gradlew organization-structure-mongo:bootRun
+
+To start app execute:
+ 
+```
+./gradlew organization-structure-mongo:bootRun
+```
+
+Application requires MongoDB (3.0.0+) running on port 27017.
