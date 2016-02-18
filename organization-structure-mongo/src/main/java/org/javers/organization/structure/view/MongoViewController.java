@@ -53,6 +53,11 @@ public class MongoViewController extends ViewController {
     }
 
     @Override
+    public void savePerson(@RequestBody PersonDto person) {
+        personService.save(personDtoToPerson(person));
+    }
+
+    @Override
     public PersonDto personDetails(@PathVariable int id) {
         return personToPersonDto(personService.findPerson(id));
     }
