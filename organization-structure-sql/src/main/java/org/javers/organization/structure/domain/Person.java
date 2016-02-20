@@ -1,15 +1,11 @@
 package org.javers.organization.structure.domain;
 
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-/**
- * @author bartosz walacik
- */
 @Entity
 @Table
 public class Person {
@@ -28,6 +24,11 @@ public class Person {
 
 
     public Person() {
+    }
+
+    public Person(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
     public Person(int id, String firstName, String lastName, Sex sex, Integer salary, Position position) {

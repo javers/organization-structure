@@ -10,9 +10,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import java.io.Serializable;
 
-/**
- * @author bartosz walacik
- */
 @Entity
 @Table
 public class Employee implements Serializable {

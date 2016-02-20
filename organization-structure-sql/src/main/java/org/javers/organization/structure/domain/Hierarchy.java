@@ -9,9 +9,6 @@ import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * @author bartosz walacik
- */
 @Entity
 @Table
 public class Hierarchy implements Serializable{
