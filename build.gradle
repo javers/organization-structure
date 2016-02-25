@@ -28,7 +28,7 @@ subprojects {
         testCompile "org.spockframework:spock-spring:$spockVersion"
         testCompile 'cglib:cglib-nodep:3.2.0'
         testCompile 'org.springframework:spring-test:4.1.6.RELEASE'
-
+        testCompile 'org.codehaus.groovy:groovy-all:2.4.1'
     }
 }
 

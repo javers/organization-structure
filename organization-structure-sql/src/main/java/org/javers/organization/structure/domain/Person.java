@@ -22,13 +22,7 @@ public class Person {
     @OneToOne(mappedBy = "person")
     Employee employee;
 
-
     public Person() {
-    }
-
-    public Person(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
     }
 
     public Person(int id, String firstName, String lastName, Sex sex, Integer salary, Position position) {
