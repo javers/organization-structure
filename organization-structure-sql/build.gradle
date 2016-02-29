@@ -3,7 +3,6 @@ apply plugin: 'spring-boot'
 dependencies {
     compile project(':organization-structure-ui')
     compile "org.springframework.boot:spring-boot-starter-data-jpa:$springBootVersion"
-    compile 'org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final'
     compile "org.javers:javers-spring-boot-starter-sql:$javersVersion"
 
     compile 'com.h2database:h2:1.4.191'
