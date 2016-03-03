@@ -61,5 +61,9 @@ public class Person {
     public Employee getEmployee() {
         return employee;
     }
+
+    public void setSalary(Integer salary) {
+        this.salary = salary;
+    }
 }
 

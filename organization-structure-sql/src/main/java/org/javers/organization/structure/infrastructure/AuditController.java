@@ -9,7 +9,10 @@ import org.javers.core.metamodel.object.CdoSnapshot;
 import org.javers.organization.structure.domain.Hierarchy;
 import org.javers.organization.structure.domain.HierarchyRepository;
 import org.javers.organization.structure.domain.Person;
+import org.javers.organization.structure.domain.PersonRepository;
 import org.javers.repository.jql.QueryBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,14 +25,28 @@ import java.util.Optional;
 @RestController
 @RequestMapping(value = "/audit")
 public class AuditController {
+    private static final Logger logger = LoggerFactory.getLogger(AuditController.class);
 
     private final Javers javers;
     private final HierarchyRepository hierarchyRepository;
+    private final PersonRepository personRepository;
 
     @Autowired
-    public AuditController(Javers javers, HierarchyRepository hierarchyRepository) {
+    public AuditController(Javers javers, HierarchyRepository hierarchyRepository, PersonRepository personRepository) {
         this.javers = javers;
         this.hierarchyRepository = hierarchyRepository;
+        this.personRepository = personRepository;
+    }
+
+    @RequestMapping("/test")
+    public void updateFrodo() {
+        logger.info("updating Frodo ...");
+
+        Person frodo = personRepository.findOne(0);
+        logger.info(frodo.toString());
+
+        frodo.setSalary(1234);
+        personRepository.save(frodo);
     }
 
     @RequestMapping("/person")
