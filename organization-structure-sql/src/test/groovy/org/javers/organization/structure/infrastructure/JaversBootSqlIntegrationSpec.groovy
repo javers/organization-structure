@@ -8,16 +8,15 @@ import org.javers.organization.structure.domain.Person
 import org.javers.organization.structure.domain.PersonRepository
 import org.javers.repository.jql.QueryBuilder
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.SpringApplicationContextLoader
-import org.springframework.boot.test.WebIntegrationTest
+import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.ContextConfiguration
 import spock.lang.Specification
 
 /**
  * @author bartosz.walacik
  */
-@ContextConfiguration(loader = SpringApplicationContextLoader.class, classes = SqlApplication.class)
-@WebIntegrationTest(randomPort = true)
+@ContextConfiguration(classes = [SqlApplication])
+@SpringBootTest(webEnvironment=SpringBootTest.WebEnvironment.RANDOM_PORT)
 class JaversBootSqlIntegrationSpec extends Specification {
 
     @Autowired
