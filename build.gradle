@@ -22,10 +22,7 @@ subprojects {
     apply plugin: 'groovy'
 
     dependencies {
-        testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBootVersion
-        testCompile 'com.google.guava:guava:18.0'
         testCompile "org.spockframework:spock-core:$spockVersion"
-        testCompile "org.spockframework:spock-spring:$spockVersion"
         testCompile 'cglib:cglib-nodep:3.2.0'
         testCompile 'org.codehaus.groovy:groovy-all:2.4.1'
     }

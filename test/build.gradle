@@ -1,0 +1,15 @@
+version 'unspecified'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.5
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.javers:javers-core:$javersVersion"
+
+    //testCompile 'com.google.guava:guava:18.0'
+}

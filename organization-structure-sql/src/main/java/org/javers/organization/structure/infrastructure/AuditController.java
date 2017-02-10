@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -85,7 +86,7 @@ public class AuditController {
 
         jqlQuery = param.isPresent() ? jqlQuery.andProperty(param.get()) : jqlQuery;
 
-        List<CdoSnapshot> changes = javers.findSnapshots(jqlQuery.build());
+        List<CdoSnapshot> changes = new ArrayList(javers.findSnapshots(jqlQuery.build()));
 
         changes.sort((o1, o2) -> -1 * o1.getCommitMetadata().getCommitDate().compareTo(o2.getCommitMetadata().getCommitDate()));
 

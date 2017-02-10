@@ -1,5 +1,5 @@
 include 'organization-structure-ui',
         'organization-structure-mongo',
         'organization-structure-sql'
-
+include 'test'
 
