@@ -22,6 +22,19 @@ http://localhost:8080/view/person
 http://localhost:8080/view/person/0
 ```
 
+```
+Create New Person
+Post http://localhost:8080/view/person
+{
+	"id": 101,
+	"firstName": "Yang",
+	"lastName": "Huajie",
+	"sex": "MALE",
+	"salary": 22,
+	"position": "DEVELOPER"
+}
+```
+
 ## spring-boot-starter-data-sql
 
 To start app execute:
