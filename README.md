@@ -22,9 +22,11 @@ http://localhost:8080/view/person
 http://localhost:8080/view/person/0
 ```
 
+
+Create new person:
+
 ```
-Create New Person
-Post http://localhost:8080/view/person
+POST http://localhost:8080/view/person
 {
 	"id": 101,
 	"firstName": "Yang",
