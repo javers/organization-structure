@@ -61,7 +61,7 @@ class AuditControllerSpec extends Specification {
         then:
         def changes = findAllChanges(1)
         changes.size() == 1
-        changes[0].commitMetadata.id == 3
+        changes[0].commitMetadata.id > 0
         changes[0].property == "salary"
         changes[0].left == 1000
         changes[0].right == 2000
