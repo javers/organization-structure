@@ -1,0 +1,17 @@
+group 'org.javers'
+version '1.0'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    maven { url "http://172.29.1.57:8080" }
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.javers:javers-admin-frontend:1.2"
+    compile "org.javers:javers-spring:$javersVersion"
+    compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
+}

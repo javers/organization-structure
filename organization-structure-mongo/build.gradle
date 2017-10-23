@@ -1,7 +1,13 @@
 apply plugin: 'spring-boot'
 
+repositories {
+    maven { url "http://172.29.1.57:8080" }
+    mavenCentral()
+}
+
 dependencies {
     compile project(':organization-structure-ui')
+    compile project(':javers-admin-spring-boot-starter')
     compile("org.springframework.boot:spring-boot-starter-data-mongodb:$springBootVersion")
     compile "org.javers:javers-spring-boot-starter-mongo:$javersVersion"
     compile 'org.mongodb:mongo-java-driver:3.0.4'
