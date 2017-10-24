@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/javers-admin-api")
+@RequestMapping(value = "/javers-admin/api")
 public class MainController {
 
     public MainController() {
@@ -33,7 +33,7 @@ public class MainController {
         );
     }
 
-    @RequestMapping("/entity/{entityName}/")
+    @RequestMapping("/entities/{entityName}/")
     public String latestSnapshots(@PathVariable String entityName) {
         List<CdoSnapshot> snapshots = javers.findSnapshots(
                 QueryBuilder.byClass(ReflectionUtil.classForName(entityName)).build());

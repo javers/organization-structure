@@ -1,7 +1,7 @@
 apply plugin: 'spring-boot'
 
 repositories {
-    maven { url "http://172.29.1.57:8080" }
+    maven { url "http://{placeholder}:8080" }
     mavenCentral()
 }
 

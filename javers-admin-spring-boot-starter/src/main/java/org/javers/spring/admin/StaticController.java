@@ -2,6 +2,7 @@ package org.javers.spring.admin;
 
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.HandlerMapping;
@@ -22,20 +23,32 @@ public class StaticController {
                 .toString()
                 .replace("/javers-admin/", "");
 
+        if (StringUtils.isEmpty(path)) {
+            path = "index.html";
+        }
 
         InputStream res = getStreamFromJar("/" + path);
 
-        String ext = path.split("\\.")[1];
+        String[] split = path.split("\\.");
+        String ext = split[split.length - 1];
 
         if ("html".equalsIgnoreCase(ext)) {
             response.setContentType("text/html");
         } else if ("css".equalsIgnoreCase(ext)) {
             response.setContentType("text/css");
+        } else if ("svg".equalsIgnoreCase(ext)) {
+            response.setContentType("image/svg+xml");
         } else if ("js".equalsIgnoreCase(ext)) {
             response.setContentType("application/javascript");
-        } else {
+        }
+        else if ("map".equalsIgnoreCase(ext)) {
+            response.setContentType("application/json");
+        }
+        else {
             response.setContentType("image/"+ext);
         }
+
+        //System.out.println("serving "+ path + " with MIME " +response.getContentType() );
 
         IOUtils.copy(res, response.getOutputStream());
     }
