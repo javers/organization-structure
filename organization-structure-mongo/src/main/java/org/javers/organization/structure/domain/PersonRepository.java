@@ -5,5 +5,4 @@ import org.springframework.data.repository.CrudRepository;
 
 @JaversSpringDataAuditable
 public interface PersonRepository extends CrudRepository<Person, Integer> {
-
 }

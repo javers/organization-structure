@@ -1,7 +1,6 @@
 package org.javers.organization.structure.infrastructure;
 
 import com.google.common.collect.Lists;
-import org.javers.core.Javers;
 import org.javers.organization.structure.domain.Employee;
 import org.javers.organization.structure.domain.Hierarchy;
 import org.javers.organization.structure.domain.HierarchyRepository;
@@ -10,10 +9,8 @@ import org.javers.organization.structure.domain.PersonRepository;
 import org.javers.organization.structure.domain.Position;
 import org.javers.organization.structure.domain.Sex;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
-
 import java.util.List;
 
 /**
@@ -138,10 +135,8 @@ public class MongoDataInitializer {
             Hierarchy hier_2013 = new Hierarchy("Hier_2013", Lists.newArrayList(eBob, eLucy, eKaz));
             hierarchyRepository.save(hier_2013);
 
-
             Hierarchy hier_2014 = new Hierarchy("Hier_2014", new MongoDataInitializer(mongoTemplate, personRepository, hierarchyRepository, false).createBobTree());
             hierarchyRepository.save(hier_2014);
-
 
             List<Employee> employees = new MongoDataInitializer(mongoTemplate, personRepository, hierarchyRepository, false).createBobTree();
             eKaz.addSubordinate(eCharlie);
@@ -151,7 +146,6 @@ public class MongoDataInitializer {
             eEricCartman.addSubordinate(eKennyMcCormick);
 
             eBob.addSubordinate(eEricCartman);
-
 
             Hierarchy hier_2015 = new Hierarchy("Hier_2015", employees);
             hierarchyRepository.save(hier_2015);
