@@ -17,16 +17,22 @@ or run on H2:
 
 ## REST API
 
-Application exposes REST interface:
+### Application exposes REST interface:
 
 ```
 http://localhost:8080/view/hierarchy
 http://localhost:8080/view/hierarchy/Hier_2015
-http://localhost:8080/view/person
+http://localhost:8080/view/persons
 http://localhost:8080/view/person/0
 ```
 
-Create new person:
+### Make some changes on Frodo
+
+```
+http://localhost:8080/audit/test
+```
+
+### Create new person:
 
 ```
 POST http://localhost:8080/view/person
@@ -35,15 +41,31 @@ POST http://localhost:8080/view/person
 	"firstName": "Yang",
 	"lastName": "Huajie",
 	"sex": "MALE",
-	"salary": 22,
+	"salary": 1000,
 	"position": "DEVELOPER"
 }
 ```
 
-## spring-boot-starter-data-sql
+### Update person:
 
-To start app execute:
- 
 ```
-./gradlew organization-structure-sql:bootRun
+PUT http://localhost:8080/view/person
+{
+	"id": 101,
+	"firstName": "Yang",
+	"lastName": "Huajie",
+	"sex": "MALE",
+	"salary": 1022,
+	"position": "DEVELOPER"
+}
+```
+
+### View audit data
+
+```
+http://localhost:8080/audit/persons
+http://localhost:8080/audit/person/0
+
+http://localhost:8080/audit/person/snapshots
+http://localhost:8080/audit/person/0/snapshots
 ```

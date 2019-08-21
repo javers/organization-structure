@@ -1,10 +1,13 @@
 package org.javers.organization.structure.domain;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Version;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  * @author bartosz walacik
  */
+@Document
 public class Person {
 
     @Id
@@ -14,6 +17,8 @@ public class Person {
     private Sex sex;
     private Integer salary;
     private Position position;
+    @Version
+    private Long version;
 
     public Person() {
     }
@@ -66,5 +71,9 @@ public class Person {
 
     public Employee toEmployee() {
         return new Employee(firstName+"."+lastName, id);
+    }
+
+    public void setSalary(Integer salary) {
+        this.salary = salary;
     }
 }

@@ -1,15 +1,13 @@
 package org.javers.organization.structure.infrastructure;
 
 
+import org.javers.core.Changes;
 import org.javers.core.Javers;
 import org.javers.core.diff.Change;
 import org.javers.core.diff.Diff;
 import org.javers.core.json.JsonConverter;
 import org.javers.core.metamodel.object.CdoSnapshot;
-import org.javers.organization.structure.domain.Hierarchy;
-import org.javers.organization.structure.domain.HierarchyRepository;
-import org.javers.organization.structure.domain.Person;
-import org.javers.organization.structure.domain.PersonRepository;
+import org.javers.organization.structure.domain.*;
 import org.javers.repository.jql.QueryBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,48 +41,38 @@ public class AuditController {
     public void updateFrodo() {
         logger.info("updating Frodo ...");
 
-        Person frodo = personRepository.findById(0).get();
+        Person frodo = personRepository.findById(0).orElse(
+                new Person(0, "Frodo", "Baggins", Sex.MALE, 9_000, Position.DEVELOPER)
+        );
         logger.info(frodo.toString());
 
-        frodo.setSalary(1234);
+        frodo.setSalary(frodo.getSalary() + 100);
         personRepository.save(frodo);
     }
 
-    @RequestMapping("/person")
-    public String getPersonChanges(@RequestParam Optional<String> param) {
-        QueryBuilder jqlQuery = QueryBuilder.byClass(Person.class);
+    @RequestMapping("/persons")
+    public String getPersonChanges() {
+        QueryBuilder jqlQuery = QueryBuilder.byClass(Person.class)
+                .withNewObjectChanges();
 
-        jqlQuery = param.isPresent() ? jqlQuery.andProperty(param.get()) : jqlQuery;
+        Changes changes = javers.findChanges(jqlQuery.build());
 
-        List<Change> changes = javers.findChanges(jqlQuery.build());
-
-        changes.sort((o1, o2) -> -1 * o1.getCommitMetadata().get().getCommitDate().compareTo(o2.getCommitMetadata().get().getCommitDate()));
-
-        JsonConverter jsonConverter = javers.getJsonConverter();
-
-        return jsonConverter.toJson(changes);
+        return "<pre>" + changes.prettyPrint() + "</pre>";
     }
 
     @RequestMapping("/person/{id}")
-    public String getPersonChanges(@PathVariable Integer id, @RequestParam Optional<String> param) {
-        QueryBuilder jqlQuery = QueryBuilder.byInstanceId(id, Person.class);
+    public String getPersonChanges(@PathVariable Integer id) {
+        QueryBuilder jqlQuery = QueryBuilder.byInstanceId(id, Person.class)
+                .withNewObjectChanges();
 
-        jqlQuery = param.isPresent() ? jqlQuery.andProperty(param.get()) : jqlQuery;
+        Changes changes = javers.findChanges(jqlQuery.build());
 
-        List<Change> changes = javers.findChanges(jqlQuery.build());
-
-        changes.sort((o1, o2) -> -1 * o1.getCommitMetadata().get().getCommitDate().compareTo(o2.getCommitMetadata().get().getCommitDate()));
-
-        JsonConverter jsonConverter = javers.getJsonConverter();
-
-        return jsonConverter.toJson(changes);
+        return "<pre>" + changes.prettyPrint() + "</pre>";
     }
 
     @RequestMapping("/person/snapshots")
-    public String getPersonSnapshots(@RequestParam Optional<String> param) {
+    public String getPersonSnapshots() {
         QueryBuilder jqlQuery = QueryBuilder.byClass(Person.class);
-
-        jqlQuery = param.isPresent() ? jqlQuery.andProperty(param.get()) : jqlQuery;
 
         List<CdoSnapshot> changes = new ArrayList(javers.findSnapshots(jqlQuery.build()));
 
@@ -96,10 +84,8 @@ public class AuditController {
     }
 
     @RequestMapping("/person/{login}/snapshots")
-    public String getPersonSnapshots(@PathVariable String login, @RequestParam Optional<String> param) {
+    public String getPersonSnapshots(@PathVariable String login) {
         QueryBuilder jqlQuery = QueryBuilder.byInstanceId(login, Person.class);
-
-        jqlQuery = param.isPresent() ? jqlQuery.andProperty(param.get()) : jqlQuery;
 
         List<CdoSnapshot> changes = javers.findSnapshots(jqlQuery.build());
 

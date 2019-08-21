@@ -19,7 +19,7 @@ public abstract class ViewController {
     @RequestMapping("/hierarchy/{name}")
     public abstract List<OrganizationStructureTableRow> findHierarchyByName(@PathVariable String name);
 
-    @RequestMapping(value = "person", method = RequestMethod.GET)
+    @RequestMapping(value = "persons", method = RequestMethod.GET)
     public abstract Map<Integer, String> findAllPersons();
 
     @RequestMapping(value = "person", method = RequestMethod.PUT)

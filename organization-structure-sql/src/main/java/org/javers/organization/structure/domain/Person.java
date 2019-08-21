@@ -11,7 +11,6 @@ import javax.persistence.Table;
 public class Person {
 
     @Id
-    @GeneratedValue
     private int id;
     private String firstName;
     private String lastName;
