@@ -94,8 +94,8 @@ public class AuditController {
 
     @RequestMapping("/hierarchy/{left}/diff/{right}")
     public String getPersonSnapshots(@PathVariable String left, @PathVariable String right) {
-        Hierarchy l = hierarchyRepository.findOne(left);
-        Hierarchy p = hierarchyRepository.findOne(right);
+        Hierarchy l = hierarchyRepository.findById(left).get();
+        Hierarchy p = hierarchyRepository.findById(right).get();
 
 
         Diff diff = javers.compare(l, p);

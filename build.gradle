@@ -2,32 +2,23 @@ buildscript {
     repositories {
         mavenCentral()
     }
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-    }
-}
-
-allprojects {
-    apply plugin: 'java'
-
-    repositories {
-        mavenCentral()
-        maven {
-            url "https://oss.sonatype.org/content/repositories/snapshots"
-        }
-    }
 }
 
 subprojects {
+    apply plugin: 'application'
+    apply plugin: 'java'
     apply plugin: 'groovy'
+
+    repositories {
+        mavenCentral()
+    }
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
 
     dependencies {
         testCompile "org.spockframework:spock-core:$spockVersion"
+        testCompile "org.codehaus.groovy:groovy-all:$groovyVersion"
         testCompile 'cglib:cglib-nodep:3.2.0'
-        testCompile 'org.codehaus.groovy:groovy-all:2.4.1'
     }
-}
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '4.1'
 }

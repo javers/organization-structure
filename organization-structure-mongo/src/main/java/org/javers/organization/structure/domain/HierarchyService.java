@@ -25,12 +25,7 @@ public class HierarchyService {
     }
 
     public List<Employee> getHierarchyEmployees(String name) {
-        Hierarchy hierarchy = hierarchyRepository.findOne(name);
-
-        if (hierarchy == null) {
-            return Collections.emptyList();
-        }
-
-        return hierarchy.getEmployees();
+        return hierarchyRepository.findById(name)
+                .map(it -> it.getEmployees()).orElse(Collections.emptyList());
     }
 }

@@ -1,11 +1,11 @@
-apply plugin: 'spring-boot'
-
 dependencies {
     compile project(':organization-structure-ui')
     compile("org.springframework.boot:spring-boot-starter-data-mongodb:$springBootVersion")
     compile "org.javers:javers-spring-boot-starter-mongo:$javersVersion"
-    compile 'org.mongodb:mongo-java-driver:3.0.4'
+    compile "org.mongodb:mongo-java-driver:$mongoDbDriverVersion"
 
     testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBootVersion
     testCompile "org.spockframework:spock-spring:$spockVersion"
 }
+
+mainClassName = 'org.javers.organization.structure.MongoApplication'

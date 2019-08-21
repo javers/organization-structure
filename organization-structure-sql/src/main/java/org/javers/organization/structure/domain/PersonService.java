@@ -33,7 +33,7 @@ public class PersonService {
     }
 
     public Person findPerson(int id) {
-        return personRepository.findOne(id);
+        return personRepository.findById(id).get();
     }
 
     public Map<Integer, String> findAllPersons() {

@@ -3,13 +3,17 @@ Sample application demonstrating use of JaVers Spring Boot starters.
 
 ## spring-boot-starter-data-mongodb
 
-To start app execute:
+To start app execute (requires MongoDB (3.0.0+) running on port 27017):
  
 ```
-./gradlew organization-structure-mongo:bootRun
+./gradlew organization-structure-mongo:run
 ```
 
-Application requires MongoDB (3.0.0+) running on port 27017.
+or run on H2:
+
+```
+./gradlew organization-structure-sql:run
+```
 
 ## REST API
 
@@ -21,7 +25,6 @@ http://localhost:8080/view/hierarchy/Hier_2015
 http://localhost:8080/view/person
 http://localhost:8080/view/person/0
 ```
-
 
 Create new person:
 
